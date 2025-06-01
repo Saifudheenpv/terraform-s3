@@ -1,166 +1,63 @@
-Terraform AWS S3 Project
+# Terraform S3 Bucket Configuration
 
-This project demonstrates Infrastructure as Code (IaC) using Terraform to automate a private AWS S3 bucket in the us-east-1 region. It includes variables for reusability, ownership controls, and a private ACL, showcasing real-world DevOps skills for cloud infrastructure automation.
+This repository contains Terraform configuration for creating a secure S3 bucket in AWS with proper ownership controls and private access.
 
-Features
+## Features
 
+- Creates an S3 bucket with a globally unique name
+- Configures bucket ownership controls
+- Sets bucket ACL to private
+- Uses AWS provider with configurable region
 
+## Prerequisites
 
+- Terraform installed (version 1.0.0 or later)
+- AWS credentials configured
+- AWS CLI installed (optional)
 
+## Usage
 
-Terraform configuration for an AWS S3 bucket.
-
-
-
-Variables for region and bucket name for reusability.
-
-
-
-Private bucket with ownership controls.
-
-
-
-Automated setup and teardown (AWS free tier).
-
-
-
-Professional GitHub repository.
-
-Prerequisites
-
-
-
-
-
-Terraform
-
-
-
-AWS CLI (configured)
-
-
-
-AWS account with IAM user (AmazonS3FullAccess)
-
-
-
-Git
-
-
-
-GitHub account
-
-Setup Instructions
-
-
-
-
-
-Clone the repository:
-
-git clone https://github.com/your-username/terraform-s3.git
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/terraform-s3.git
 cd terraform-s3
+```
 
-
-
-Configure AWS CLI:
-
-aws configure
-
-Enter AWS Access Key ID, Secret Access Key, region (e.g., us-east-1), output (json).
-
-
-
-Initialize Terraform:
-
+2. Initialize Terraform:
+```bash
 terraform init
+```
 
-
-
-Plan the deployment:
-
+3. Review the execution plan:
+```bash
 terraform plan
+```
 
-
-
-Apply the configuration:
-
+4. Apply the configuration:
+```bash
 terraform apply
+```
 
-Type yes. Verify in AWS S3 console.
+## Configuration
 
+The following variables can be configured in `variables.tf`:
 
+- `region`: AWS region (default: "us-east-1")
+- `bucket_name`: Globally unique name for the S3 bucket
 
-Destroy the infrastructure:
+## Screenshot
+![S3 Bucket](images/screenshot.png)
 
-terraform destroy
+## License
 
-Type yes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Terraform Configuration
+## AWS Free Tier
 
+This configuration uses AWS S3 which is eligible for the AWS Free Tier:
+- 5GB of storage
+- 20,000 GET requests
+- 2,000 PUT requests
+- 15GB of data transfer out
 
-
-
-
-main.tf: AWS provider, S3 bucket, ownership controls, private ACL.
-
-
-
-variables.tf: Defines reusable variables for region and bucket name.
-
-
-
-.gitignore: Excludes Terraform state and .terraform/ directory.
-
-
-
-Bucket name must be globally unique (e.g., yourname-bucket-2025-xyz).
-
-Challenges Faced
-
-
-
-
-
-Mastered Terraform syntax and AWS provider setup.
-
-
-
-Configured AWS CLI and IAM on Windows.
-
-
-
-Ensured bucket name uniqueness with random suffixes.
-
-
-
-Added variables for reusable Terraform code.
-
-Future Improvements
-
-
-
-
-
-Add outputs to display bucket details.
-
-
-
-Include more AWS resources (e.g., IAM, CloudFront).
-
-
-
-Integrate CI/CD for automated Terraform deployments.
-
-Author
-
-
-
-
-
-Your Name (GitHub)
-
-
-
-Connect on LinkedIn
+Please monitor your AWS Billing Dashboard to ensure you stay within the free tier limits.
